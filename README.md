@@ -34,7 +34,7 @@ $ cd frontend_team2019
 $ npm run dev
 ```
 
-## 2回目以降のローカル開発環境の起動
+## 本番環境の構築と起動
 ``` bash
 # build
 $ npm run build
