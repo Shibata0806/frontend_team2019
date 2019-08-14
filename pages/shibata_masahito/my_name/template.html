@@ -1,0 +1,15 @@
+<div class="container">
+    <h1>myNameアプリ（サンプル用）</h1>
+    <div class="input-my-name">
+        <p>名前を入力してください。</p>
+        <input type="text" v-model="myName">
+        <button @click="deleteMyName">削除</button>
+    </div>
+    <!-- myName が空の時には表示しない -->
+    <div class="render-my-name" v-if="myName !== ''">
+        <p>私の名前は<span class="my-name">{{myName}}</span>です。</p>
+    </div>
+    <div class="links">
+        <nuxt-link to="/" class="button--green">トップページへ</nuxt-link>
+    </div>
+</div>
