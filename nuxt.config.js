@@ -45,5 +45,6 @@ module.exports = {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  serverMiddleware: ['~/api/index.js']
 }

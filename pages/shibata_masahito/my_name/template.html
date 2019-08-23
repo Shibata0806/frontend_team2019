@@ -3,6 +3,7 @@
     <div class="input-my-name">
         <p>名前を入力してください。</p>
         <input type="text" v-model="myName">
+        <button @click="registMyName">保存</button>
         <button @click="deleteMyName">削除</button>
     </div>
     <!-- myName が空の時には表示しない -->
