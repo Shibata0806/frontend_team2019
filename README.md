@@ -19,7 +19,7 @@ $ git branch -a
 $ git checkout -b first remotes/origin/first
 
 # 依存関係にあるライブラリなどのインストール
-$ npm run install
+$ npm install
 
 # ローカルで起動
 # http://localhost:3000/

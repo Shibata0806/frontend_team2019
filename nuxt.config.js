@@ -45,5 +45,10 @@ module.exports = {
     */
     extend(config, ctx) {
     }
-  }
+  },
+  serverMiddleware: [
+    '~/api/index.js',
+    //起動時に必要なDBの作成を行います
+    '~/db/shibata_masahito/create_db.js'
+  ]
 }

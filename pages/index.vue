@@ -31,6 +31,14 @@
           Nuxtぴょんぴょんボタン
         </a>
       </div>
+      <h3 class="personal">個人開発ページリンク</h3>
+      <div class="links">
+
+        <!-- ここに各個人のページへのリンクを作成していきましょう。 -->
+        <nuxt-link to="/shibata_masahito/myName" class="button--green">柴田昌人</nuxt-link>
+        <nuxt-link to="/shibata_masahito/myName" class="button--green">山田太郎</nuxt-link>
+
+      </div>
     </div>
   </div>
 </template>
@@ -45,7 +53,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .container {
   margin: 0 auto;
   min-height: 100vh;
@@ -56,21 +64,29 @@ export default {
 }
 
 .title {
+  margin: 20px 0 20px 0;
   font-family: 'Quicksand', 'Source Sans Pro', -apple-system, BlinkMacSystemFont,
     'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   display: block;
   font-weight: 300;
-  font-size: 100px;
+  font-size: 60px;
   color: #35495e;
   letter-spacing: 1px;
 }
 
 .subtitle {
   font-weight: 300;
-  font-size: 42px;
+  font-size: 30px;
   color: #526488;
   word-spacing: 5px;
   padding-bottom: 15px;
+}
+
+.personal {
+  margin: 50px 0 20px 0;
+  font-weight: 300;
+  font-size: 20px;
+  color: #35495e;
 }
 
 .links {
