@@ -34,10 +34,13 @@ module.exports = {
   /*
   ** Nuxt.js modules
   */
-  modules: [
-  ],
-  /*
-  ** Build configuration
+ modules: [
+      '@nuxtjs/axios'
+    ],
+    axios: {
+    },
+  
+  /** Build configuration
   */
   build: {
     /*
