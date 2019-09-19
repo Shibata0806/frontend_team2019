@@ -88,5 +88,5 @@ sw.*
 .DS_Store
 
 # Directory for storing Auth Token etc.
-# I do not want to git publish!
+# Do not want to git publish!
 token
