@@ -9,7 +9,8 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json())
 
 //各メンバーのディレクトリを読み込んで、PATHと紐付ける
-app.use('/shibata_masahito', require('./shibata_masahito'))
+app.use('/shibata_masahito', require('./shibata_masahito',))
+app.use('/kazehiki03', require('./kazehiki03',))
 
 
 app.get("/", (req, res) => {
