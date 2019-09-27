@@ -1,5 +1,7 @@
-<template>
-	<div>
-		Hello World
-	</div>
-</template>
+<script>
+export default {
+  fetch({ redirect }) {
+    redirect(301, '/kazehiki03/cmslack')
+  }
+}
+</script>
