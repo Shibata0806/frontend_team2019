@@ -1,0 +1,14 @@
+<div class="container">
+    <h1>駅リスト</h1>
+	<p>最初の駅は「{{firstStationName}}」</p>
+	<table>
+		<tr>
+			<td>駅順</td>
+			<td>駅名</td>
+		</tr>
+		<tr v-for="station in stations">
+			<td>{{station.station_order}}</td>
+			<td>{{station.station_name_jpn}}</td>
+		</tr>
+	</table>
+</div>
