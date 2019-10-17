@@ -1,6 +1,6 @@
 <div class="container">
-    <h1>駅リスト</h1>
-	<p>最初の駅は「{{firstStationName}}」</p>
+	<h1>駅リスト</h1>
+	<label v-for="railway in railways" @change="getStationList"><input type="radio" name="railway_id" v-model="railway_id" v-bind:value="railway.same_as">{{railway.name_jpn}}</label>
 	<table>
 		<tr>
 			<td>駅順</td>
@@ -8,7 +8,7 @@
 		</tr>
 		<tr v-for="station in stations">
 			<td>{{station.station_order}}</td>
-			<td>{{station.station_name_jpn}}</td>
+			<td v-bind:title="station.same_as">{{station.station_name_jpn}}</td>
 		</tr>
 	</table>
 </div>
