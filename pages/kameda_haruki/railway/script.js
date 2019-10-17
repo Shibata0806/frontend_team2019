@@ -8,8 +8,7 @@ export default {
 		return {
 			stations: [],
 			railways: [],
-			railway_id:'',
-			testString:''
+			railway_id: '',
 		}
 	},
 	created() {
@@ -23,7 +22,7 @@ export default {
 		},
 		getStationList: function () {
 			let railwayId = this.railway_id;
-			axios.get('/api/kameda_haruki/station_list/'+railwayId).then((response) => {
+			axios.get('/api/kameda_haruki/station_list/' + railwayId).then((response) => {
 				this.stations = response.data
 			});
 		},
