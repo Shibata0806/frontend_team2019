@@ -1,0 +1,25 @@
+<div>
+  <h1>日本全国の天気</h1>
+  <ul>
+    <li><button @click="getWeatherInfo('sapporo')">札幌</button></li>
+    <li><button @click="getWeatherInfo('tokyo')">東京</button></li>
+    <li><button @click="getWeatherInfo('nagoya')">名古屋</button></li>
+    <li><button @click="getWeatherInfo('osaka')">大阪</button></li>
+    <li><button @click="getWeatherInfo('fukuoka')">福岡</button></li>
+  </ul>
+  
+  <!--都市名が空の時には表示しない -->
+  <div v-if="city !== ''">
+    <h1>{{city}}の天気情報</h1>
+    <ul>
+      <li>天気：{{weather}}</li>
+      <li>温度：{{temp}}℃</li>
+      <li>湿度：{{humidity}}％</li>
+      <li>風速：{{speed}}m</li>
+    </ul>
+  </div>
+  
+  <div>
+    <nuxt-link to="/">トップページへ</nuxt-link>
+  </div>
+</div>
