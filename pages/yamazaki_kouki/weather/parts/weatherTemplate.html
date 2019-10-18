@@ -1,22 +1,23 @@
-<div>
+<div class="top">
   <h1>日本全国の天気</h1>
-  <ul>
-    <li><button @click="getWeatherInfo('sapporo')">札幌</button></li>
-    <li><button @click="getWeatherInfo('tokyo')">東京</button></li>
-    <li><button @click="getWeatherInfo('nagoya')">名古屋</button></li>
-    <li><button @click="getWeatherInfo('osaka')">大阪</button></li>
-    <li><button @click="getWeatherInfo('fukuoka')">福岡</button></li>
+  <ul class="city">
+    <li><button class="citybutton" @click="getWeatherInfo('sapporo')">札幌</button></li>
+    <li><button class="citybutton" @click="getWeatherInfo('tokyo')">東京</button></li>
+    <li><button class="citybutton" @click="getWeatherInfo('nagoya')">名古屋</button></li>
+    <li><button class="citybutton" @click="getWeatherInfo('osaka')">大阪</button></li>
+    <li><button class="citybutton" @click="getWeatherInfo('fukuoka')">福岡</button></li>
   </ul>
   
   <!--都市名が空の時には表示しない -->
-  <div v-if="city !== ''">
+  <div class="info" v-if="city !== ''">
     <h1>{{city}}の天気情報</h1>
     <ul>
-      <li>天気：{{weather}}</li>
-      <li>温度：{{temp}}℃</li>
-      <li>湿度：{{humidity}}％</li>
-      <li>風速：{{speed}}m</li>
+      <li class="weather">天気：{{weather}}</li>
+      <li class="temp">温度：{{temp}}℃</li>
+      <li class="humidity">湿度：{{humidity}}％</li>
+      <li class="speed">風速：{{speed}}m</li>
     </ul>
+    <button class="forecastbutton" @click="getForecastInfo('osaka')">今後の予報を見る</button>
   </div>
   
   <div>

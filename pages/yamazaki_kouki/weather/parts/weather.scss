@@ -1,0 +1,50 @@
+.top {
+  padding: 20px;
+  text-align: center;
+  background-color: #afeeee;
+}
+
+h1 {
+  font-size: 30px;
+}
+
+.city {
+  margin: 20px 0 10px 0;
+}
+
+.citybutton {
+  position: relative;
+  width: 80px;
+  height: 100%;
+  margin: 0 0 5px 0;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+}
+
+.forecastbutton {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  margin: 0 0 5px 0;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+}
+
+button:hover {
+  background: #00bcd4;
+  color: white;
+}
+
+.links {
+  padding-top: 15px;
+}
