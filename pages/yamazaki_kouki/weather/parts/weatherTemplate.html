@@ -7,6 +7,9 @@
     <li> <button class="cityButton" @click="getWeatherInfo('osaka')">大阪</button> </li>
     <li> <button class="cityButton" @click="getWeatherInfo('fukuoka')">福岡</button> </li>
   </ul>
+  <div>
+    <nuxt-link to="/">トップページへ</nuxt-link>
+  </div>
   <!--都市名が空の時には表示しない -->
   <div class="current" v-if="city !== ''">
     <h1>現在の{{city}}の天気情報</h1>
@@ -37,8 +40,8 @@
         </tr>
       </tbody>
     </table>
-  </div>
-  <div>
-    <nuxt-link to="/">トップページへ</nuxt-link>
+    <div>
+      <nuxt-link to="/">トップページへ</nuxt-link>
+    </div>
   </div>
 </div>
