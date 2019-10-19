@@ -11,17 +11,8 @@
     <nuxt-link to="/">トップページへ</nuxt-link>
   </div>
   <!--都市名が空の時には表示しない -->
-  <div class="current" v-if="city !== ''">
-    <h1>現在の{{city}}の天気情報</h1>
-    <ul>
-      <li class="weather">天気：{{weather}}</li>
-      <li class="temp">温度：{{temp}}℃</li>
-      <li class="humidity">湿度：{{humidity}}％</li>
-      <li class="speed">風速：{{speed}}m</li>
-    </ul> <button class="forecastButton" @click="getForecastInfo()">今後の予報を見る↓</button> </div>
-  <!--予報リストが空の時には表示しない -->
-  <div class="forecast" v-if="list.length">
-    <h1>今後の{{city}}の予報</h1>
+  <div class="weatherInfo" v-if="city !== ''">
+    <h1>{{city}}の天気情報</h1>
     <table border="5">
       <tbody>
         <tr>
@@ -31,17 +22,22 @@
           <th>湿度</th>
           <th>風速</th>
         </tr>
-        <tr v-for="forecast in list">
-          <td class="forecastTime">{{forecast.dt_txt}}</td>
-          <td class="forecastWeather">{{forecast.weather[0].main}}</td>
-          <td class="forecastTemp">{{forecast.main.temp}}</td>
-          <td class="forecastHumidity">{{forecast.main.humidity}}</td>
-          <td class="forecastSpeed">{{forecast.wind.speed}}</td>
+        <tr>
+          <td class="time">現在</td>
+          <td class="weather" v-bind:class="weather"></td>
+          <td class="temp">{{temp}}</td>
+          <td class="humidity">{{humidity}}</td>
+          <td class="speed">{{speed}}</td>
+        </tr>
+        <!--予報リストが空の時には表示しない -->
+        <tr v-if="list.length" v-for="forecast in list">
+          <td class="time">{{forecast.dt_txt}}</td>
+          <td class="weather" v-bind:class="forecast.weather[0].main"></td>
+          <td class="temp">{{forecast.main.temp}}</td>
+          <td class="humidity">{{forecast.main.humidity}}</td>
+          <td class="speed">{{forecast.wind.speed}}</td>
         </tr>
       </tbody>
-    </table>
-    <div>
-      <nuxt-link to="/">トップページへ</nuxt-link>
-    </div>
-  </div>
+    </table> <button v-if="!list.length" class="forecastButton" @click="getForecastInfo()">今後の予報も見る</button> </div>
+</div>
 </div>

@@ -9,15 +9,7 @@ h1 {
   margin: 0 0 10px 0;
 }
 
-.city {
-  margin: 20px 0 10px 0;
-}
-
-.current {
-  margin: 20px 0 10px 0;
-}
-
-forecast {
+.city, .weatherInfo {
   margin: 20px 0 10px 0;
 }
 
@@ -57,7 +49,7 @@ button:hover {
 table {
   border-collapse: separate;
   border-spacing: 5px;
-  width: 100%;
+  margin: auto;
 }
 
 table th, table td {
@@ -76,6 +68,35 @@ table td {
   background-color: #e4d4bc;
   border: solid 1px #af9d85;
 }
+
+.time {
+  width: 200px;
+     line-height: 90px;
+}
+
+.temp, .humidity, .speed {
+  width: 100px;
+       line-height: 90px;
+
+}
+
+.weather{
+width:152px;
+height:112px;
+}
+
+.Clear{
+background-image: url('./image/clear.png');
+}
+.Rain{
+background-image: url('./image/rain.png');
+}
+
+.Clouds,.Mist{
+background-image: url('./image/clouds.png');
+}
+
+
 
 .links {
   padding-top: 15px;
