@@ -90,3 +90,6 @@ sw.*
 # Directory for storing Auth Token etc.
 # Do not want to git publish!
 token
+
+# vscode config file
+.vscode
