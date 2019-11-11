@@ -30,6 +30,8 @@ export default {
         }
       })
         .then(response => {
+          console.info("[index.vue]");
+          console.log("response:", response);
           console.log("status:", response.status);
           console.log("body:", response.data);
         })
