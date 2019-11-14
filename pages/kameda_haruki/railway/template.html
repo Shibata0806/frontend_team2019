@@ -1,6 +1,8 @@
 <div class="container">
 	<h1>駅リスト</h1>
-	<label v-for="railway in railways" @change="getStationList"><input type="radio" name="railway_id" v-model="railway_id" v-bind:value="railway.same_as">{{railway.name_jpn}}</label>
+	<label v-for="railway in railways" @change="getLineInfo()"><input type="radio" name="railway_id" v-model="railway_id" v-bind:value="railway.same_as">{{railway.name_jpn}}</label>
+	<h2>運行情報</h2>
+	<p>{{train_status_detail_text}}</p>
 	<table>
 		<tr>
 			<td>駅順</td>
