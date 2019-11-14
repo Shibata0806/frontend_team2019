@@ -1,16 +1,32 @@
 <div class="container">
 	<h1>駅リスト</h1>
-	<label v-for="railway in railways" @change="getLineInfo()"><input type="radio" name="railway_id" v-model="railway_id" v-bind:value="railway.same_as">{{railway.name_jpn}}</label>
+	<label v-for="railway in railways" @change="switchLineSelect()"><input type="radio" name="railway_id" v-model="railway_id" v-bind:value="railway.same_as">{{railway.name_jpn}}</label>
 	<h2>運行情報</h2>
 	<p>{{train_status_detail_text}}</p>
+	<template v-if="Object.keys(railwayProperty).length>0">
+		<label @change="getTrainLocation()">
+			<input type="radio" name="directionId" v-model="directionId" v-bind:value="railwayProperty.ascendingOrderDirection">
+			{{railwayProperty.ascendingDirectionName}}
+		</label>
+		<label @change="getTrainLocation()">
+			<input type="radio" name="directionId" v-model="directionId" v-bind:value="railwayProperty.descendingOrderDirection">
+			{{railwayProperty.descendingDirectionName}}
+		</label>
+	</template>
 	<table>
 		<tr>
 			<td>駅順</td>
 			<td>駅名</td>
 		</tr>
-		<tr v-for="station in stations">
-			<td>{{station.station_order}}</td>
-			<td v-bind:title="station.same_as">{{station.station_name_jpn}}</td>
-		</tr>
+		<template v-for="(stationProperty,key) in stations">
+			<tr>
+				<td>{{stationProperty.station_order}}</td>
+				<td v-bind:title="stationProperty.same_as">{{stationProperty.station_name_jpn}}</td>
+			</tr>
+			<tr v-if="stationProperty.station_order < stations.length">
+				<td>駅間</td>
+				<td>　</td>
+			</tr>
+		</template>
 	</table>
 </div>
