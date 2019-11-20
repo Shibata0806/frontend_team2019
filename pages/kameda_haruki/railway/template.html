@@ -17,15 +17,28 @@
 		<tr>
 			<td>駅順</td>
 			<td>駅名</td>
+			<td>在線列車</td>
 		</tr>
 		<template v-for="(stationProperty,key) in stations">
 			<tr>
 				<td>{{stationProperty.station_order}}</td>
 				<td v-bind:title="stationProperty.same_as">{{stationProperty.station_name_jpn}}</td>
+				<td>
+					<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,null)">
+						<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
+						電車
+					</div>
+				</td>
 			</tr>
 			<tr v-if="stationProperty.station_order < stations.length">
 				<td>駅間</td>
 				<td>　</td>
+				<td>
+					<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,stations[key + 1].same_as)">
+						<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
+						電車
+					</div>
+				</td>
 			</tr>
 		</template>
 	</table>
