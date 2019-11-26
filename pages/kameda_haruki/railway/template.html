@@ -34,10 +34,18 @@
 				<td>駅間</td>
 				<td>　</td>
 				<td>
-					<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,stations[key + 1].same_as)">
-						<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
-						電車
-					</div>
+					<template v-if="directionId===railwayProperty.ascendingOrderDirection">
+						<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,stations[key + 1].same_as)">
+							<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
+							電車
+						</div>
+					</template>
+					<template v-else>
+						<div v-for="trainProperty in drawTrainLocation(stations[key + 1].same_as,stationProperty.same_as)">
+							<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
+							電車
+						</div>
+					</template>
 				</td>
 			</tr>
 		</template>
