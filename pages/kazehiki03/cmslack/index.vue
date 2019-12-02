@@ -24,6 +24,8 @@ export default {
   },
   methods: {
     getChannelsHistory: function() {
+      var messages = [];
+
       axios({
         method: "GET",
         url: url,
@@ -32,10 +34,39 @@ export default {
         }
       })
         .then(response => {
+          const approveMark = "white_check_mark";
+          const disagreeMark = "no_entry_sign";
+          var approvedMessage = {};
+          var approvedMessagesAry = [];
+
           console.info("[index.vue]");
-          console.log("response:", response);
-          console.log("status:", response.status);
-          console.log("body:", response.data);
+          console.info("status:", response.status);
+
+          let messages = response.data.messages;
+          console.log("取得メッセージ数:", messages.length);
+          console.log("response.data.messages:", messages);
+
+          for (let i = 0; i < messages.length; i++) {
+            // messageである
+            if (messages[i].type && messages[i].type === "message") {
+              // reactionがついている
+              if (messages[i].reactions) {
+                for (let j = 0; j < messages[i].reactions.length; j++) {
+                  // appriveが1つ以上ついている
+                  if (
+                    messages[i].reactions[j].name === approveMark &&
+                    messages[i].reactions[j].count >= 1
+                  ) {
+                    approvedMessage = {ts: messages[i].ts, text:messages[i].text};
+                    approvedMessagesAry.push(approvedMessage)
+                  }
+                }
+              }
+            } else {
+              console.warn("is not message:", messages[i].text);
+            }
+          }
+          console.log(approvedMessagesAry);
         })
         .catch(err => {
           console.log("err:", err);
