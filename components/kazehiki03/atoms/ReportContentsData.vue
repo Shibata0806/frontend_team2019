@@ -1,7 +1,6 @@
 <template>
   <div>
-    <span>2019/11/12</span>
-    <span>11:00</span>
+    <img src="https://jp.vuejs.org/images/logo.png">
   </div>
 </template>
 
