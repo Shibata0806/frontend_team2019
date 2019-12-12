@@ -61,4 +61,15 @@ router.get('/station_list/:railway_id', function (req, res) {
   })
 })
 
+router.get('/trainType_list', function (req, res) {
+  let db = new sqlite3.Database('db/kameda_haruki/odpt_foropst.sqlite3')
+  db.serialize(function() {
+	db.all('SELECT * FROM trainTypes',
+	function(err, rows) {
+        res.json(rows)
+    })
+    db.close()
+  })
+})
+
 module.exports = router

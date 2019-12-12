@@ -13,7 +13,8 @@ export default {
 			train_status: {},
 			train_status_detail_text: '',
 			directionId: '',
-			trainLocations: []
+			trainLocations: [],
+			trainTypes: []
 		}
 	},
 	created() {
@@ -23,6 +24,9 @@ export default {
 		getRailwayList: function () {
 			axios.get('/api/kameda_haruki/railway_list', {}).then((response) => {
 				this.railways = response.data
+			});
+			axios.get('/api/kameda_haruki/trainType_list', {}).then((response) => {
+				this.trainTypes = response.data
 			});
 		},
 		switchLineSelect: function () {
@@ -78,7 +82,35 @@ export default {
 						trainLocation['odpt:toStation'] === toStationId;
 				}
 			);
-			return currentSectionTrains;
-		}
+			let trainTypes = this.trainTypes;
+			return currentSectionTrains.map(function (currentSectionTrain) {
+				let adjustedTrainProperty = {
+					delayTime: '',
+					trainOwner: '',
+					trainType: ''
+				};
+				if ('odpt:delay' in currentSectionTrain) {
+					adjustedTrainProperty.delayTime = '遅れ' + currentSectionTrain['odpt:delay'] / 60 + '分';
+				}
+				if ('odpt:trainOwner' in currentSectionTrain) {
+					switch (currentSectionTrain['odpt:trainOwner']) {
+						case 'odpt.Operator:Toei':
+							adjustedTrainProperty.trainOwner = '都営車';
+							break;
+						default:
+							adjustedTrainProperty.trainOwner = '都営車以外';
+							break;
+					}
+				}
+				if ('odpt:trainType' in currentSectionTrain) {
+					adjustedTrainProperty.trainType = trainTypes.filter(
+						function (trainType) {
+							return trainType['same_as'] === currentSectionTrain['odpt:trainType'];
+						}
+					)[0]['name_jpn'];
+				}
+				return adjustedTrainProperty;
+			}, trainTypes);
+		},
 	},
 }
