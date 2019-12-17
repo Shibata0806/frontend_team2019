@@ -6,7 +6,7 @@ export default {
         ]
     },
     data: () => ({
-        trying: false,
+        isTrying: false,
         words: [
             'egg',
             'bag',
@@ -19,22 +19,24 @@ export default {
             'dog',
             'desk'
         ],
-        solvedWords: []
+        solvedWords: [],
+        typingText: '',
+        currentWord: '',
+        currentWordNumber: 1,
     }),
     methods: {
         start() {
-            this.trying = true;
+            this.isTrying = true;
             this.solvedWords = []
-            this.$nextTick(() => {
-                document.getElementById('input-typing').focus()
-            })
+            this.$nextTick(() => this.$refs.input.focus())
+            this.setRandomText()
         },
-        currentWord() {
+        setRandomText() {
             const unsolvedWords = this.words.filter((word) => {
                 return (!this.solvedWords.includes(word))
             })
             const randomIndex = Math.floor(Math.random()*unsolvedWords.length)
-            return unsolvedWords[randomIndex]
+            this.currentWord = unsolvedWords[randomIndex]
         },
     }
 }
