@@ -4,15 +4,15 @@
         <div class="row">
             <div class="col-12">
                 <!-- タイピング内容で画像を切り替え -->
-                <img src="/images/good.png">
-                <img src="/images/bad.png">
+                <img src="/images/good.png" v-if="isTypingCorrect">
+                <img src="/images/bad.png" v-else>
             </div>
         </div>
         <div class="badge badge-dark" style="margin:15px 0;">第{{ currentWordNumber }}問</div>
         <h1>{{ currentWord }}</h1>
         <div class="row">
             <div class="offset-4 col-4">
-                <input id="input-typing" type="text" class="form-control">
+                <input id="input-typing" type="text" class="form-control" ref="input" v-model="typingText">
             </div>
         </div>
         <br>
