@@ -1,7 +1,8 @@
 <template>
   <div>
     <TheHeader />
-    <ArticleBody :approvedMessages='approvedMessages'/>
+    <ArticleBody :approvedMessages="approvedMessages" />
+    <div>{{approvedMessages}}</div>
     <TheFooter />
   </div>
 </template>
@@ -22,7 +23,7 @@ export default {
   data() {
     return {
       approvedMessages: []
-    }
+    };
   },
   created() {
     this.getChannelsHistory();
@@ -39,36 +40,13 @@ export default {
         }
       })
         .then(response => {
-          const approveMark = "white_check_mark";
-          const disagreeMark = "no_entry_sign";
-          var approvedMessage = {};
-
           console.info("[index.vue]");
-          console.info("status:", response.status);
+          console.log("response.data.status:", response.data.status);
+          console.log("response.data.message:", response.data.messages);
 
-          let messages = response.data.messages;
-          console.log("取得メッセージ数:", messages.length);
-          console.log("response.data.messages:", messages);
-
-          for (let i = 0; i < messages.length; i++) {
-            if (messages[i].type && messages[i].type === "message") {
-              if (messages[i].reactions) {
-                for (let j = 0; j < messages[i].reactions.length; j++) {
-                  //  type=messageでreactionがついていてapproveMarkが1つ以上ついている
-                  if (
-                    messages[i].reactions[j].name === approveMark &&
-                    messages[i].reactions[j].count >= 1
-                  ) {
-                    approvedMessage = {ts: messages[i].ts, text:messages[i].text};
-                    this.approvedMessages.push(approvedMessage)
-                  }
-                }
-              }
-            } else {
-              console.warn("is not message:", messages[i].text);
-            }
+          if (response.status === "200") {
+            this.approvedMessages = response.data.messages;
           }
-          console.log(this.approvedMessages);
         })
         .catch(err => {
           console.log("err:", err);
