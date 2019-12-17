@@ -1,9 +1,11 @@
 <template>
   <div>
     <ul>
-      <!-- <li v-for="message in {{approvedMessages}}"> -->
-        <ReportBody />
-      <!-- </li> -->
+      <li v-for="messages in approvedMessages" v-bind:key="messages.ts">
+        <ReportBody :contents="messages" />
+        <!-- <div>{{messages.ts}}</div> -->
+        <!-- <div>{{messages.text}}</div> -->
+      </li>
     </ul>
   </div>
 </template>
@@ -14,33 +16,7 @@ export default {
   components: {
     ReportBody
   },
-  props: {
-    approvedMessages: Array
-  },
-  // data: {
-  //   messages: this.approvedMessages
-  // },
-  mounted() {
-    this.hoge();
-  },
-  created(){
-    this.fuga();
-  },
-  computed: {
-    piyo() {
-      console.info('piyooooooooooooooooooooooo');
-    }
-  },
-  methods: {
-    hoge: function () {
-      // console.info(this.messages);
-      console.info("ほげぇぇぇぇぇぇぇぇぇぇ");
-    },
-    fuga: function () {
-      // console.info(this.messages);
-      console.info("ふがぁぁぁぁぁぁぁぁぁぁぁぁ");
-    }
-  }
+  props: ["approvedMessages"]
 };
 </script>
 

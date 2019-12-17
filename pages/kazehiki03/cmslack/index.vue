@@ -2,7 +2,6 @@
   <div>
     <TheHeader />
     <ArticleBody :approvedMessages="approvedMessages" />
-    <div>{{approvedMessages}}</div>
     <TheFooter />
   </div>
 </template>
@@ -44,8 +43,10 @@ export default {
           console.log("response.data.status:", response.data.status);
           console.log("response.data.message:", response.data.messages);
 
-          if (response.status === "200") {
+          if (response.data.status === 200) {
             this.approvedMessages = response.data.messages;
+          } else {
+            //todo APIエラー時の挙動考える
           }
         })
         .catch(err => {
@@ -58,6 +59,6 @@ export default {
 
 <style scope lang="scss">
 body {
-  background-color: #141622;
+  // background-color: #141622;
 }
 </style>
