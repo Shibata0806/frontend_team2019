@@ -1,6 +1,8 @@
 <div class="container">
 	<h1>駅リスト</h1>
-	<label v-for="railway in railways" @change="switchLineSelect()"><input type="radio" name="railway_id" v-model="railway_id" v-bind:value="railway.same_as">{{railway.name_jpn}}</label>
+	<div id="lineList">
+		<label v-for="railway in railways" @change="switchLineSelect()" v-bind:style="{color:railway.color}"><input type="radio" name="railway_id" v-model="railway_id" v-bind:value="railway.same_as">{{railway.name_jpn}}</label>
+	</div>
 	<h2>運行情報</h2>
 	<p>{{train_status_detail_text}}</p>
 	<template v-if="Object.keys(railwayProperty).length>0">

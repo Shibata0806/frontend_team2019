@@ -1,9 +1,25 @@
 @import url("https://use.fontawesome.com/releases/v5.6.1/css/all.css");
+* {
+	box-sizing: border-box;
+}
 .container {
 	margin: 20px 20px 20px 20px;
 }
 h1 {
 	font-size: 30px;
+}
+#lineList{
+	font-size:0;
+	width:100%;
+}
+#lineList label{
+	display:inline-block;
+	font-size:20px;
+	width:calc(100% / 3 - 5px);
+	margin:2.5px;
+	border:3px solid gray;
+	padding:5px;
+	border-radius: 10px;
 }
 table {
 	border: 2px solid black;
