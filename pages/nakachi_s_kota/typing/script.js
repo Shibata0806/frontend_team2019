@@ -22,7 +22,7 @@ export default {
         solvedWords: [],
         typingText: '',
         currentWord: '',
-        currentWordNumber: 1,
+        currentWordNumber: '',
     }),
     methods: {
         start() {
@@ -30,6 +30,7 @@ export default {
             this.solvedWords = []
             this.$nextTick(() => this.$refs.input.focus())
             this.setRandomText()
+            this.currentWordNumber = 1
         },
         setRandomText() {
             const unsolvedWords = this.words.filter((word) => {
