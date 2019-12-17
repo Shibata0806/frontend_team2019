@@ -83,11 +83,13 @@ export default {
 				}
 			);
 			let trainTypes = this.trainTypes;
+			let stations = this.stations;
 			return currentSectionTrains.map(function (currentSectionTrain) {
 				let adjustedTrainProperty = {
 					delayTime: '',
 					trainOwner: '',
-					trainType: ''
+					trainType: '',
+					destination: ''
 				};
 				if ('odpt:delay' in currentSectionTrain) {
 					adjustedTrainProperty.delayTime = '遅れ' + currentSectionTrain['odpt:delay'] / 60 + '分';
@@ -109,8 +111,43 @@ export default {
 						}
 					)[0]['name_jpn'];
 				}
+				if ('odpt:destinationStation' in currentSectionTrain) {
+					let destinationStationIds = currentSectionTrain['odpt:destinationStation'];
+					let destinationStationNames = [];
+					destinationStationIds.forEach(
+						function (destinationStationId) {
+							let matchStations = stations.filter(
+								function (stationProperty) {
+									return stationProperty['same_as'] === destinationStationId;
+								}
+							);
+							if (matchStations.length > 0) {
+								//都営線各線
+								destinationStationNames.push(matchStations[0]['station_name_jpn']);
+							}//ここから直通各線
+							else if (destinationStationId.indexOf('odpt.Station:Keisei.') === 0) {
+								destinationStationNames.push("京成線直通押上方面");
+							} else if (destinationStationId.indexOf('odpt.Station:Hokuso.') === 0) {
+								destinationStationNames.push("北総線直通押上方面");
+							} else if (destinationStationId.indexOf('odpt.Station:Shibayama.') === 0) {
+								destinationStationNames.push("芝山鉄道線直通押上方面");
+							} else if (destinationStationId.indexOf('odpt.Station:Keikyu.') === 0) {
+								destinationStationNames.push("京急線直通泉岳寺方面");
+							} else if (destinationStationId.indexOf('odpt.Station:Tokyu.') === 0) {
+								destinationStationNames.push("東急線直通目黒方面");
+							} else if (destinationStationId.indexOf('odpt.Station:TokyoMetro.') === 0) {
+								destinationStationNames.push("目黒方面");
+							} else if (destinationStationId.indexOf('odpt.Station:Keio.') === 0) {
+								destinationStationNames.push("京王線直通新宿方面");
+							} else {
+								destinationStationNames.push("");
+							}
+						}
+					,stations);
+					adjustedTrainProperty.destination = destinationStationNames.join("・") + '行き';
+				}
 				return adjustedTrainProperty;
-			}, trainTypes);
+			}, [trainTypes,stations]);
 		},
 	},
 }

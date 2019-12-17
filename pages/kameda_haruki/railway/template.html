@@ -26,7 +26,7 @@
 				<td>
 					<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,null)">
 						<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
-						{{trainProperty.trainType}}
+						{{trainProperty.trainType}} {{trainProperty.destination}}
 						<p>{{trainProperty.delayTime}}</p>
 						<p>{{trainProperty.trainOwner}}</p>
 					</div>
@@ -39,7 +39,7 @@
 					<template v-if="directionId===railwayProperty.ascendingOrderDirection">
 						<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,stations[key + 1].same_as)">
 							<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
-							{{trainProperty.trainType}}
+							{{trainProperty.trainType}} {{trainProperty.destination}}
 							<p>{{trainProperty.delayTime}}</p>
 							<p>{{trainProperty.trainOwner}}</p>
 						</div>
@@ -47,7 +47,7 @@
 					<template v-else>
 						<div v-for="trainProperty in drawTrainLocation(stations[key + 1].same_as,stationProperty.same_as)">
 							<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
-							{{trainProperty.trainType}}
+							{{trainProperty.trainType}} {{trainProperty.destination}}
 							<p>{{trainProperty.delayTime}}</p>
 							<p>{{trainProperty.trainOwner}}</p>
 						</div>
