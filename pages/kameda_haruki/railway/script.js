@@ -74,6 +74,7 @@ export default {
 			axios.get(apiUrl).then((response) => {
 				this.trainLocations = response.data
 			});
+			
 		},
 		drawTrainLocation: function (fromStationId, toStationId) {
 			let currentSectionTrains = this.trainLocations.filter(

@@ -1,61 +1,72 @@
 <div class="container">
-	<h1>駅リスト</h1>
+	<h1>東京都交通局の鉄道路線情報</h1>
 	<div id="lineList">
 		<label v-for="railway in railways" @change="switchLineSelect()" v-bind:style="{'border-color':railway.color}"><input type="radio" name="railway_id" v-model="railway_id" v-bind:value="railway.same_as">{{railway.name_jpn}}</label>
 	</div>
-	<h2>運行情報</h2>
-	<p>{{train_status_detail_text}}</p>
-	<template v-if="Object.keys(railwayProperty).length>0">
-		<label @change="getTrainLocation()">
-			<input type="radio" name="directionId" v-model="directionId" v-bind:value="railwayProperty.ascendingOrderDirection">
-			{{railwayProperty.ascendingDirectionName}}
-		</label>
-		<label @change="getTrainLocation()">
-			<input type="radio" name="directionId" v-model="directionId" v-bind:value="railwayProperty.descendingOrderDirection">
-			{{railwayProperty.descendingDirectionName}}
-		</label>
-	</template>
-	<table>
-		<tr>
-			<td>駅順</td>
-			<td>駅名</td>
-			<td>在線列車</td>
-		</tr>
-		<template v-for="(stationProperty,key) in stations">
+	<div id="lineInfoPart">
+		<h2 v-bind:style="{'border-color':railwayProperty.railwayColor}"><i class="fas fa-exclamation-circle" v-bind:style="{color:railwayProperty.railwayColor}"></i>運行情報</h2>
+		<p>{{train_status_detail_text}}</p>
+		<h2 v-bind:style="{'border-color':railwayProperty.railwayColor}"><i class="fas fa-route" v-bind:style="{color:railwayProperty.railwayColor}"></i>駅リスト・列車走行位置</h2>
+		
+		<h3 v-bind:style="{'border-color':railwayProperty.railwayColor}"><i class="fas fa-location-arrow" v-bind:style="{color:railwayProperty.railwayColor}"></i>列車走行位置を確認する方向を選択</h3>
+		<p>※日暮里・舎人ライナーは列車走行位置表示に対応していません。</p>
+		<div v-if="Object.keys(railwayProperty).length>0" id="directionList">
+			<label @change="getTrainLocation()" v-bind:style="{'border-color':railwayProperty.railwayColor}">
+				<input type="radio" name="directionId" v-model="directionId" v-bind:value="railwayProperty.ascendingOrderDirection">
+				<i class="fas fa-angle-double-down" v-bind:style="{color:railwayProperty.railwayColor}"></i><br>
+				{{railwayProperty.ascendingDirectionName}}
+			</label>
+			<label @change="getTrainLocation()" v-bind:style="{'border-color':railwayProperty.railwayColor}">
+				<input type="radio" name="directionId" v-model="directionId" v-bind:value="railwayProperty.descendingOrderDirection">
+				<i class="fas fa-angle-double-up" v-bind:style="{color:railwayProperty.railwayColor}"></i><br>
+				{{railwayProperty.descendingDirectionName}}
+			</label>
+		</div>
+		<table>
 			<tr>
-				<td>{{stationProperty.station_order}}</td>
-				<td v-bind:title="stationProperty.same_as">{{stationProperty.station_name_jpn}}</td>
-				<td>
-					<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,null)">
-						<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
-						{{trainProperty.trainType}} {{trainProperty.destination}}
-						<p>{{trainProperty.delayTime}}</p>
-						<p>{{trainProperty.trainOwner}}</p>
-					</div>
-				</td>
+				<td>駅順</td>
+				<td>駅名</td>
+				<td>在線列車</td>
 			</tr>
-			<tr v-if="stationProperty.station_order < stations.length">
-				<td>駅間</td>
-				<td>　</td>
-				<td>
-					<template v-if="directionId===railwayProperty.ascendingOrderDirection">
-						<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,stations[key + 1].same_as)">
+			<template v-for="(stationProperty,key) in stations">
+				<tr>
+					<td>{{stationProperty.station_order}}</td>
+					<td v-bind:title="stationProperty.same_as">{{stationProperty.station_name_jpn}}</td>
+					<td>
+						<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,null)">
 							<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
 							{{trainProperty.trainType}} {{trainProperty.destination}}
 							<p>{{trainProperty.delayTime}}</p>
 							<p>{{trainProperty.trainOwner}}</p>
 						</div>
-					</template>
-					<template v-else>
-						<div v-for="trainProperty in drawTrainLocation(stations[key + 1].same_as,stationProperty.same_as)">
-							<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
-							{{trainProperty.trainType}} {{trainProperty.destination}}
-							<p>{{trainProperty.delayTime}}</p>
-							<p>{{trainProperty.trainOwner}}</p>
-						</div>
-					</template>
-				</td>
-			</tr>
-		</template>
-	</table>
+					</td>
+				</tr>
+				<tr v-if="stationProperty.station_order < stations.length">
+					<td>駅間</td>
+					<td>　</td>
+					<td>
+						<template v-if="directionId===railwayProperty.ascendingOrderDirection">
+							<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,stations[key + 1].same_as)">
+								<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
+								{{trainProperty.trainType}} {{trainProperty.destination}}
+								<p>{{trainProperty.delayTime}}</p>
+								<p>{{trainProperty.trainOwner}}</p>
+							</div>
+						</template>
+						<template v-else>
+							<div v-for="trainProperty in drawTrainLocation(stations[key + 1].same_as,stationProperty.same_as)">
+								<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>
+								{{trainProperty.trainType}} {{trainProperty.destination}}
+								<p>{{trainProperty.delayTime}}</p>
+								<p>{{trainProperty.trainOwner}}</p>
+							</div>
+						</template>
+					</td>
+				</tr>
+			</template>
+		</table>
+	</div>
+	<div id="stationInfoPart">
+		駅の情報
+	</div>
 </div>
