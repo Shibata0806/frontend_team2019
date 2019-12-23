@@ -37,7 +37,7 @@
         <!-- ここに各個人のページへのリンクを作成していきましょう。 -->
         <nuxt-link to="/shibata_masahito/myName" class="button--green">柴田昌人</nuxt-link>
         <nuxt-link to="/shibata_masahito/myName" class="button--green">山田太郎</nuxt-link>
-
+        <nuxt-link to="/kameda_haruki/railway" class="button--green">亀田遼希</nuxt-link>
       </div>
     </div>
   </div>
