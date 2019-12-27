@@ -46,7 +46,7 @@ export default {
           if (response.data.status === 200) {
             this.approvedMessages = response.data.messages;
           } else {
-            //todo APIエラー時の挙動考える
+            //todo APIエラー時の挙動考えろ
           }
         })
         .catch(err => {
@@ -59,6 +59,6 @@ export default {
 
 <style scope lang="scss">
 body {
-  // background-color: #141622;
+  background-color: #F6F6F6;
 }
 </style>

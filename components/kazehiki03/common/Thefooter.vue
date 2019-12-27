@@ -6,10 +6,11 @@
 @import "~assets/scss/_valiables.scss";
 .footer {
   background-color: $color-gray;
+  color: $color-white;
   text-align: center;
   line-height: 30px;
   width: 100%;
-  position: absolute;
+  margin-top: 24px;
   bottom: 0;
 }
 </style>

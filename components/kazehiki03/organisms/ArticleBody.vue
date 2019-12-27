@@ -3,8 +3,6 @@
     <ul>
       <li v-for="messages in approvedMessages" v-bind:key="messages.ts">
         <ReportBody :contents="messages" />
-        <!-- <div>{{messages.ts}}</div> -->
-        <!-- <div>{{messages.text}}</div> -->
       </li>
     </ul>
   </div>
