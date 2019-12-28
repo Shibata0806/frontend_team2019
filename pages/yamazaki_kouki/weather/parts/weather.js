@@ -7,7 +7,7 @@ export default {
     return {
       city: "",
       weather: "",
-      temp: 0,
+      temperature: 0,
       humidity: 0,
       speed: 0,
       list: []
