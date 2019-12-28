@@ -71,33 +71,33 @@ table td {
 
 .time {
   width: 200px;
-     line-height: 90px;
+  line-height: 90px;
 }
 
 .temp, .humidity, .speed {
   width: 100px;
-       line-height: 90px;
-
+  line-height: 90px;
 }
 
-.weather{
-width:152px;
-height:112px;
+.weather {
+  width: 152px;
+  height: 112px;
 }
 
-.Clear{
-background-image: url('./image/clear.png');
-}
-.Rain{
-background-image: url('./image/rain.png');
+.Clear {
+  background-image: url('./image/clear.png');
 }
 
-.Clouds,.Mist{
-background-image: url('./image/clouds.png');
+.Rain {
+  background-image: url('./image/rain.png');
 }
 
-.Snow{
-background-image: url('./image/snow.png');
+.Clouds, .Mist {
+  background-image: url('./image/clouds.png');
+}
+
+.Snow {
+  background-image: url('./image/snow.png');
 }
 
 .links {
