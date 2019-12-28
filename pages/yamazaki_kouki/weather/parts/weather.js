@@ -17,7 +17,9 @@ export default {
   methods: {
     //APIから選択された地域の天気情報を取得する(現在）
     getWeatherInfo: function (cityName) {
-      axios.get('https://api.openweathermap.org/data/2.5/weather?q=' + cityName + ',jp&units=metric&appid=9b6d5ff7b0491b2df21485a4036bf34e').then((response) => {
+      const url = 'https://api.openweathermap.org/data/2.5/weather';
+      const param = '?q=' + cityName + ',jp&units=metric&appid=9b6d5ff7b0491b2df21485a4036bf34e';
+      axios.get(url + param).then((response) => {
         this.city = response.data.name
         this.weather = response.data.weather[0].main
         this.temp = response.data.main.temp
@@ -28,7 +30,9 @@ export default {
     },
     //APIから選択された地域の天気情報を取得する（予報）
     getForecastInfo: function () {
-      axios.get('https://api.openweathermap.org/data/2.5/forecast?q=' + this.city + ',jp&units=metric&appid=9b6d5ff7b0491b2df21485a4036bf34e').then((response) => {
+      const url = 'https://api.openweathermap.org/data/2.5/forecast';
+      const param = '?q=' + this.city + ',jp&units=metric&appid=9b6d5ff7b0491b2df21485a4036bf34e';
+      axios.get(url + param).then((response) => {
         this.list = response.data.list
       });
     }
