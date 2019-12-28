@@ -25,17 +25,17 @@
         <tr>
           <td class="time">本日</td>
           <td class="weather" v-bind:class="weather"></td>
-          <td class="temperature">{{temperature}}</td>
-          <td class="humidity">{{humidity}}</td>
-          <td class="speed">{{speed}}</td>
+          <td class="temperature">{{temperature}}℃</td>
+          <td class="humidity">{{humidity}}%</td>
+          <td class="speed">{{speed}}m/s</td>
         </tr>
         <!--予報リストが空の時には表示しない -->
         <tr v-if="list.length" v-for="forecast in list">
           <td class="time">{{forecast.dt_txt}}</td>
           <td class="weather" v-bind:class="forecast.weather[0].main"></td>
-          <td class="temp">{{forecast.main.temp}}</td>
-          <td class="humidity">{{forecast.main.humidity}}</td>
-          <td class="speed">{{forecast.wind.speed}}</td>
+          <td class="temp">{{forecast.main.temp}}℃</td>
+          <td class="humidity">{{forecast.main.humidity}}%</td>
+          <td class="speed">{{forecast.wind.speed}}m/s</td>
         </tr>
       </tbody>
     </table> <button v-if="!list.length" class="forecastButton" @click="getForecastInfo()">今後の予報も見る</button> </div>
