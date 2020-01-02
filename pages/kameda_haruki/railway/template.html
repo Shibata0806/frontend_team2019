@@ -29,7 +29,7 @@
 			</tr>
 			<template v-for="(stationProperty,key) in stations">
 				<tr>
-					<td v-bind:title="stationProperty.same_as">{{stationProperty.station_name_jpn}}</td>
+					<td v-bind:title="stationProperty.same_as" @click="generateStationPart(stationProperty)">{{stationProperty.station_name_jpn}}</td>
 					<td>
 						<div v-for="trainProperty in drawTrainLocation(stationProperty.same_as,null)">
 							<i class="fas fa-subway" v-bind:style="{color:railwayProperty.railwayColor}"></i>

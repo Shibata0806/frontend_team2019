@@ -6,6 +6,7 @@ export default {
 	},
 	data() {
 		return {
+			odptSettingProperties:{},
 			stations: [],
 			railways: [],
 			railway_id: '',
@@ -14,10 +15,12 @@ export default {
 			train_status_detail_text: '',
 			directionId: '',
 			trainLocations: [],
-			trainTypes: []
+			trainTypes: [],
+			currentStationProperty:{}
 		}
 	},
 	created() {
+		this.odptSettingProperties = require('../../../assets/token/kameda_haruki/odpt_setting.json')
 		this.getRailwayList()
 	},
 	methods: {
@@ -52,8 +55,7 @@ export default {
 			});
 		},
 		getTrainStatus: function () {
-			let odptSettingProperties = require('../../../assets/token/kameda_haruki/odpt_setting.json')
-			let accessKeyPart = '&acl:consumerKey=' + odptSettingProperties['accessKey'];
+			let accessKeyPart = '&acl:consumerKey=' + this.odptSettingProperties['accessKey'];
 			let railway_id = this.railway_id;
 			let apiUrl = 'https://api.odpt.org/api/v4/odpt:TrainInformation?';
 			apiUrl += 'odpt:railway=' + railway_id;
@@ -64,8 +66,7 @@ export default {
 			});
 		},
 		getTrainLocation: function () {
-			let odptSettingProperties = require('../../../assets/token/kameda_haruki/odpt_setting.json')
-			let accessKeyPart = '&acl:consumerKey=' + odptSettingProperties['accessKey'];
+			let accessKeyPart = '&acl:consumerKey=' + this.odptSettingProperties['accessKey'];
 			let railway_id = this.railway_id;
 			let apiUrl = 'https://api.odpt.org/api/v4/odpt:Train?';
 			apiUrl += 'odpt:railway=' + railway_id;
@@ -150,5 +151,27 @@ export default {
 				return adjustedTrainProperty;
 			}, [trainTypes,stations]);
 		},
+		generateStationPart:function(stationProperty){
+			this.currentStationProperty = stationProperty;
+			let stationCoordinate = {
+				longitude:stationProperty['longitude'],
+				latitude:stationProperty['latitude']
+			};
+			this.currentStationProperty['aroundFacility'] = {};
+			this.getAroundBusstopPole(stationCoordinate);
+		},
+		getAroundBusstopPole:function(stationCoordinate){
+			axios.get('https://api.odpt.org/api/v4/places/odpt:BusstopPole',
+				{
+					params: {
+						'lon':stationCoordinate['longitude'],
+						'lat':stationCoordinate['latitude'],
+						'radius':500,
+						'acl:consumerKey':this.odptSettingProperties['accessKey']
+					}
+				}).then((response) => {
+					this.currentStationProperty['aroundFacility']['busstopPole'] = response.data
+				});
+		}
 	},
 }
