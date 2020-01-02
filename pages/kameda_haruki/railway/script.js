@@ -6,7 +6,7 @@ export default {
 	},
 	data() {
 		return {
-			odptSettingProperties:{},
+			odptSettingProperties: {},
 			stations: [],
 			railways: [],
 			railway_id: '',
@@ -16,7 +16,7 @@ export default {
 			directionId: '',
 			trainLocations: [],
 			trainTypes: [],
-			currentStationProperty:{}
+			currentStationProperty: {}
 		}
 	},
 	created() {
@@ -75,7 +75,7 @@ export default {
 			axios.get(apiUrl).then((response) => {
 				this.trainLocations = response.data
 			});
-			
+
 		},
 		drawTrainLocation: function (fromStationId, toStationId) {
 			let currentSectionTrains = this.trainLocations.filter(
@@ -145,29 +145,29 @@ export default {
 								destinationStationNames.push("");
 							}
 						}
-					,stations);
+						, stations);
 					adjustedTrainProperty.destination = destinationStationNames.join("・") + '行き';
 				}
 				return adjustedTrainProperty;
-			}, [trainTypes,stations]);
+			}, [trainTypes, stations]);
 		},
-		generateStationPart:function(stationProperty){
+		generateStationPart: function (stationProperty) {
 			this.currentStationProperty = stationProperty;
 			let stationCoordinate = {
-				longitude:stationProperty['longitude'],
-				latitude:stationProperty['latitude']
+				longitude: stationProperty['longitude'],
+				latitude: stationProperty['latitude']
 			};
 			this.currentStationProperty['aroundFacility'] = {};
 			this.getAroundBusstopPole(stationCoordinate);
 		},
-		getAroundBusstopPole:function(stationCoordinate){
+		getAroundBusstopPole: function (stationCoordinate) {
 			axios.get('https://api.odpt.org/api/v4/places/odpt:BusstopPole',
 				{
 					params: {
-						'lon':stationCoordinate['longitude'],
-						'lat':stationCoordinate['latitude'],
-						'radius':500,
-						'acl:consumerKey':this.odptSettingProperties['accessKey']
+						'lon': stationCoordinate['longitude'],
+						'lat': stationCoordinate['latitude'],
+						'radius': 500,
+						'acl:consumerKey': this.odptSettingProperties['accessKey']
 					}
 				}).then((response) => {
 					this.currentStationProperty['aroundFacility']['busstopPole'] = response.data
