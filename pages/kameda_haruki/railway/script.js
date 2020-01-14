@@ -19,9 +19,9 @@ export default {
 			currentStationProperty: {
 			},
 			aroundFacility: {
-				busstopPoles: {
-				}
-			}
+				busstopPoles: []
+			},
+			busRoutes: []
 		}
 	},
 	created() {
@@ -30,9 +30,10 @@ export default {
 	},
 	methods: {
 		clearCurrentStationProperty: function () {
-			return {
+			this.aroundFacility = {
 				busstopPoles: []
 			};
+			this.busRoutes = [];
 		},
 		getRailwayList: function () {
 			axios.get('/api/kameda_haruki/railway_list', {}).then((response) => {
@@ -46,7 +47,7 @@ export default {
 			this.directionId = '';
 			this.trainLocations = [];
 			this.currentStationProperty = {};
-			this.aroundFacility = this.clearCurrentStationProperty();
+			this.clearCurrentStationProperty();
 			this.getLineInfo();
 		},
 		getLineInfo: function () {
@@ -169,7 +170,7 @@ export default {
 				longitude: stationProperty['longitude'],
 				latitude: stationProperty['latitude']
 			};
-			this.aroundFacility = this.clearCurrentStationProperty();
+			this.clearCurrentStationProperty();
 			this.getAroundBusstopPole(stationCoordinate);
 		},
 		getAroundBusstopPole: function (stationCoordinate) {
@@ -183,6 +184,18 @@ export default {
 					}
 				}).then((response) => {
 					this.aroundFacility.busstopPoles.splice(0, 0, ...response.data);
+				});
+		},
+		getBusroute: function (busstopPoleProperty) {
+			let busRouteIds = busstopPoleProperty['odpt:busroutePattern'];
+			axios.get('https://api.odpt.org/api/v4/odpt:BusroutePattern',
+				{
+					params: {
+						'owl:sameAs': busRouteIds.join(','),
+						'acl:consumerKey': this.odptSettingProperties['accessKey']
+					}
+				}).then((response) => {
+					this.busRoutes.splice(0, 0, ...response.data);
 				});
 		}
 	},

@@ -67,7 +67,18 @@
 		<h2 v-bind:style="{'border-color':railwayProperty.railwayColor}"><i class="fas fa-map-marker-alt" v-bind:style="{color:railwayProperty.railwayColor}"></i>{{currentStationProperty.station_name_jpn}}駅の情報</h2>
 		<h3 v-bind:style="{'border-color':railwayProperty.railwayColor}"><i class="fas fa-bus-alt" v-bind:style="{color:railwayProperty.railwayColor}"></i>近くのバス停</h3>
 		<div v-for="busstopPoleProperty in aroundFacility.busstopPoles">
-			<div class="busstopName">{{busstopPoleProperty['dc:title']}}</div>
+			<div class="busstopPolePanel" v-bind:style="{'border-color':railwayProperty.railwayColor}">
+				{{busstopPoleProperty['dc:title']}}
+				<button type="button" @click="getBusroute(busstopPoleProperty)">このバス停から乗れるバスを見る</button>
+			</div>
+		</div>
+		<h4 v-bind:style="{'border-color':railwayProperty.railwayColor}"><i class="fas fa-search" v-bind:style="{color:railwayProperty.railwayColor}"></i>このバス停から乗れるバスは…</h4>
+		<p>※API上での識別用の文字列が表示に含まれる可能性があります。</p>
+		<div v-for="busRouteProperty in busRoutes">
+			<div class="busRoutePanel">
+				<div class="busRouteTitle"><i class="fas fa-bus-alt" v-bind:style="{color:railwayProperty.railwayColor}"></i>{{busRouteProperty['dc:title']}}</div>
+				<div class="busRouteNote" v-if="busRouteProperty['odpt:note'].length>0">{{busRouteProperty['odpt:note']}}</div>
+			</div>
 		</div>
 	</div>
 </div>

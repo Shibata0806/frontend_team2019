@@ -35,6 +35,14 @@ h3 {
 h3 i {
 	padding: 5px 5px 5px 0px;
 }
+h4 {
+	font-size: 18px;
+	border-bottom: 2px dotted transparent;
+	padding: 3px;
+}
+h4 i {
+	padding: 5px 5px 5px 0px;
+}
 #lineList {
 	font-size: 0;
 	width: 100%;
@@ -51,7 +59,7 @@ h3 i {
 #directionList {
 	font-size: 0;
 	width: 100%;
-	padding:0;
+	padding: 0;
 }
 #directionList label {
 	font-size: 20px;
@@ -60,10 +68,10 @@ h3 i {
 	padding: 5px;
 	border-radius: 10px;
 	display: inline-block;
-	border:2px solid gray;
-	text-align:center;
+	border: 2px solid gray;
+	text-align: center;
 }
-#directionList label input{
+#directionList label input {
 	display: none;
 }
 table {
@@ -79,4 +87,31 @@ table#trainLocationTable {
 }
 table#trainLocationTable td {
 	width: 50%;
+}
+div.busstopPolePanel {
+	width: 100%;
+	border: 1px solid transparent;
+	margin: 5px auto;
+	padding: 5px;
+	border-radius: 10px;
+	font-size: 16px;
+}
+div.busstopPolePanel button {
+	display: block;
+	margin: 5px auto;
+	border: none;
+	padding: 5px;
+	border-radius: 10px;
+	background-color: gray;
+	color: white;
+	font-size: 14px;
+}
+div.busRoutePanel {
+	width: 100%;
+	padding: 5px;
+	box-shadow: gray 2px 2px 4px;
+	margin: 10px 0px;
+}
+div.busRouteNote {
+	padding-left: 1em;
 }
