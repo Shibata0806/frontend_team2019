@@ -22,7 +22,7 @@ export default {
       axios.get(url + param).then((response) => {
         this.city = response.data.name
         this.weather = response.data.weather[0].main
-        this.temp = response.data.main.temp
+        this.temperature = response.data.main.temp
         this.humidity = response.data.main.humidity
         this.speed = response.data.wind.speed
         this.list = []
