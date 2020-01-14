@@ -37,6 +37,7 @@
         <!-- ここに各個人のページへのリンクを作成していきましょう。 -->
         <nuxt-link to="/shibata_masahito/myName" class="button--green">柴田昌人</nuxt-link>
         <nuxt-link to="/shibata_masahito/myName" class="button--green">山田太郎</nuxt-link>
+        <nuxt-link to="/ichihara_mizuki/myName2" class="button--green">市原瑞樹</nuxt-link>
 
       </div>
     </div>
