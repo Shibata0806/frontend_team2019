@@ -188,6 +188,7 @@ export default {
 		},
 		getBusroute: function (busstopPoleProperty) {
 			let busRouteIds = busstopPoleProperty['odpt:busroutePattern'];
+			this.busRoutes = [];
 			axios.get('https://api.odpt.org/api/v4/odpt:BusroutePattern',
 				{
 					params: {
