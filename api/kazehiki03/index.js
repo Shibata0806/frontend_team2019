@@ -6,10 +6,11 @@ router.get("/slack", function(req, res) {
 
 
   // slackのAPIを叩く
-  const token =
-    "";
+  let apiToken = require("../../token/kazehiki03/slackToken.json");
+  const token = apiToken["token"];
+  const channel = apiToken["channel"];
   const url = "https://slack.com/api/channels.history";
-  const channel = "CLNLDHPUG";
+
   axios({
     method: "GET",
     url: url,

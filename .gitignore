@@ -93,3 +93,6 @@ token
 
 # vscode config file
 .vscode
+
+# API token
+./token/*
