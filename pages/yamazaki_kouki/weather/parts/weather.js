@@ -35,6 +35,25 @@ export default {
       axios.get(url + param).then((response) => {
         this.list = response.data.list
       });
+    },
+    //今日の日付を取得
+    getDate: function () {
+      const today = new Date();
+      const year = today.getFullYear() + '年';
+      const month = today.getMonth() + 1 + '月';
+      const day = today.getDate() + '日'
+      return year + month + day;
+    },
+    //日付フォーマット
+    dateFormat: function (date) {
+      //年月日
+      const yearMonthDay = date.split(' ')[0];
+      const year = yearMonthDay.split('-')[0] + '年';
+      const month = yearMonthDay.split('-')[1] + '月';
+      const day = yearMonthDay.split('-')[2] + '日';
+      //時間
+      const time = (date.split(' ')[1]).split(':')[0] + '時';
+      return year + month + day + ' ' + time;
     }
   },
 }
