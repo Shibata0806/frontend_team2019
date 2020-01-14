@@ -16,7 +16,12 @@ export default {
 			directionId: '',
 			trainLocations: [],
 			trainTypes: [],
-			currentStationProperty: {}
+			currentStationProperty: {
+			},
+			aroundFacility: {
+				busstopPoles: {
+				}
+			}
 		}
 	},
 	created() {
@@ -24,6 +29,11 @@ export default {
 		this.getRailwayList()
 	},
 	methods: {
+		clearCurrentStationProperty: function () {
+			return {
+				busstopPoles: []
+			};
+		},
 		getRailwayList: function () {
 			axios.get('/api/kameda_haruki/railway_list', {}).then((response) => {
 				this.railways = response.data
@@ -35,6 +45,8 @@ export default {
 		switchLineSelect: function () {
 			this.directionId = '';
 			this.trainLocations = [];
+			this.currentStationProperty = {};
+			this.aroundFacility = this.clearCurrentStationProperty();
 			this.getLineInfo();
 		},
 		getLineInfo: function () {
@@ -157,7 +169,7 @@ export default {
 				longitude: stationProperty['longitude'],
 				latitude: stationProperty['latitude']
 			};
-			this.currentStationProperty['aroundFacility'] = {};
+			this.aroundFacility = this.clearCurrentStationProperty();
 			this.getAroundBusstopPole(stationCoordinate);
 		},
 		getAroundBusstopPole: function (stationCoordinate) {
@@ -170,7 +182,7 @@ export default {
 						'acl:consumerKey': this.odptSettingProperties['accessKey']
 					}
 				}).then((response) => {
-					this.currentStationProperty['aroundFacility']['busstopPole'] = response.data
+					this.aroundFacility.busstopPoles.splice(0, 0, ...response.data);
 				});
 		}
 	},

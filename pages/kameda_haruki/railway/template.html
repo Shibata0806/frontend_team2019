@@ -64,6 +64,10 @@
 		</table>
 	</div>
 	<div id="stationInfoPart">
-		駅の情報
+		<h2 v-bind:style="{'border-color':railwayProperty.railwayColor}"><i class="fas fa-map-marker-alt" v-bind:style="{color:railwayProperty.railwayColor}"></i>{{currentStationProperty.station_name_jpn}}駅の情報</h2>
+		<h3 v-bind:style="{'border-color':railwayProperty.railwayColor}"><i class="fas fa-bus-alt" v-bind:style="{color:railwayProperty.railwayColor}"></i>近くのバス停</h3>
+		<div v-for="busstopPoleProperty in aroundFacility.busstopPoles">
+			<div class="busstopName">{{busstopPoleProperty['dc:title']}}</div>
+		</div>
 	</div>
 </div>
