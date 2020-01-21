@@ -53,12 +53,14 @@ router.get("/slack", function (req, res) {
                       privateUrl: messages[i].files[k].url_private,
                       publicUrl: messages[i].files[k].permalink_public
                     })
-                    console.info(`!!!`, approvedFiles);
+                    console.info(`approvedFiles:\n`, approvedFiles);
                   }
                 }
               }
+              let approvedMessageData = {};
               approvedMsgTxt = { ts: messages[i].ts, text: messages[i].text };
-              approvedMessages.push(approvedMsgTxt, approvedFiles);
+              approvedMessageData = { approvedMsgTxt: approvedMsgTxt, approvedFiles: approvedFiles }
+              approvedMessages.push(approvedMessageData);
               console.info("\n")
             }
           }
