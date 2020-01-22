@@ -39,7 +39,7 @@
         <nuxt-link to="/shibata_masahito/myName" class="button--green">山田太郎</nuxt-link>
         <nuxt-link to="/yamazaki_kouki/weather" class="button--green">山崎滉季</nuxt-link>
         <nuxt-link to="/ichihara_mizuki/myName2" class="button--green">市原瑞樹</nuxt-link>
-
+        <nuxt-link to="/kameda_haruki/railway" class="button--green">亀田遼希</nuxt-link>
       </div>
     </div>
   </div>
