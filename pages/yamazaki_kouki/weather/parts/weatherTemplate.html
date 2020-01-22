@@ -1,0 +1,44 @@
+<div class="top">
+  <h1>日本全国の天気</h1>
+  <ul class="city">
+    <li> <button class="cityButton" @click="getWeatherInfo('sapporo')">札幌</button> </li>
+    <li> <button class="cityButton" @click="getWeatherInfo('tokyo')">東京</button> </li>
+    <li> <button class="cityButton" @click="getWeatherInfo('nagoya')">名古屋</button> </li>
+    <li> <button class="cityButton" @click="getWeatherInfo('osaka')">大阪</button> </li>
+    <li> <button class="cityButton" @click="getWeatherInfo('fukuoka')">福岡</button> </li>
+    <li> <button class="cityButton" @click="getWeatherInfo('okinawa')">沖縄</button> </li>
+  </ul>
+  <div>
+    <nuxt-link to="/">トップページへ</nuxt-link>
+  </div>
+  <!--都市名が空の時には表示しない -->
+  <div class="weatherInfo" v-if="city !== ''">
+    <h1>{{city}}の天気情報</h1>
+    <table>
+      <tbody>
+        <tr>
+          <th>日時</th>
+          <th>天気</th>
+          <th>温度</th>
+          <th>湿度</th>
+          <th>風速</th>
+        </tr>
+        <tr>
+          <td class="time">{{getDate()}}</td>
+          <td class="weather" v-bind:class="weather"></td>
+          <td class="temperature">{{temperature}}℃</td>
+          <td class="humidity">{{humidity}}%</td>
+          <td class="speed">{{speed}}m/s</td>
+        </tr>
+        <!--予報リストが空の時には表示しない -->
+        <tr v-if="list.length" v-for="forecast in list">
+          <td class="time">{{dateFormat(forecast.dt_txt)}}</td>
+          <td class="weather" v-bind:class="forecast.weather[0].main"></td>
+          <td class="temp">{{forecast.main.temp}}℃</td>
+          <td class="humidity">{{forecast.main.humidity}}%</td>
+          <td class="speed">{{forecast.wind.speed}}m/s</td>
+        </tr>
+      </tbody>
+    </table> <button v-if="!list.length" class="forecastButton" @click="getForecastInfo()">今後の予報も見る</button> </div>
+</div>
+</div>
