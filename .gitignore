@@ -86,3 +86,13 @@ sw.*
 
 # Mac OSX
 .DS_Store
+
+# Directory for storing Auth Token etc.
+# Do not want to git publish!
+token
+
+# vscode config file
+.vscode
+
+# API token
+./token/*
