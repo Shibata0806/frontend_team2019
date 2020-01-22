@@ -57,7 +57,7 @@ export default {
 };
 </script>
 
-<style scope lang="scss">
+<style scoped lang="scss">
 body {
   background-color: #F6F6F6;
 }
