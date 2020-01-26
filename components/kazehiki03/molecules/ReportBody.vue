@@ -42,13 +42,13 @@ export default {
         1}月${dateTime.getDate()}日`;
       this.timeStamp = `${dateTime.getHours()}:${dateTime.getMinutes()}`;
     } else {
-      // もしなにもしない
+      // なにもしない
     }
   }
 };
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .reportBody {
   display: flex;
   flex-wrap: nowrap;
