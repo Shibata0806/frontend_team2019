@@ -1,0 +1,105 @@
+.top {
+  padding: 20px;
+  text-align: center;
+  background-color: #afeeee;
+}
+
+h1 {
+  font-size: 30px;
+  margin: 0 0 10px 0;
+}
+
+.city, .weatherInfo {
+  margin: 20px 0 10px 0;
+}
+
+.cityButton {
+  position: relative;
+  width: 80px;
+  height: 100%;
+  margin: 0 0 5px 0;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+}
+
+.forecastButton {
+  position: relative;
+  width: 150px;
+  height: 100%;
+  margin: 10px 0 5px 0;
+  display: inline-block;
+  font-weight: bold;
+  padding: 0.25em 0.5em;
+  text-decoration: none;
+  color: #00BCD4;
+  background: #ECECEC;
+  transition: .4s;
+}
+
+button:hover {
+  background: #00bcd4;
+  color: white;
+}
+
+table {
+  border-collapse: separate;
+  border-spacing: 5px;
+  margin: auto;
+}
+
+table th, table td {
+  border-radius: 5px;
+  text-align: center;
+  padding: 10px 0;
+}
+
+table th {
+  background-color: #c79852;
+  color: white;
+  border: solid 1px #927141;
+}
+
+table td {
+  background-color: #e4d4bc;
+  border: solid 1px #af9d85;
+}
+
+.time {
+  width: 200px;
+  line-height: 90px;
+}
+
+.temperature, .humidity, .speed {
+  width: 100px;
+  line-height: 90px;
+}
+
+.weather {
+  width: 152px;
+  height: 112px;
+}
+
+.Clear {
+  background-image: url('./image/clear.png');
+}
+
+.Rain {
+  background-image: url('./image/rain.png');
+}
+
+.Clouds, .Mist, .Fog {
+  background-image: url('./image/clouds.png');
+}
+
+.Snow {
+  background-image: url('./image/snow.png');
+}
+
+.links {
+  padding-top: 15px;
+}

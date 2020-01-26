@@ -1,0 +1,117 @@
+@import url("https://use.fontawesome.com/releases/v5.6.1/css/all.css");
+* {
+	box-sizing: border-box;
+}
+.container {
+	margin: 20px 20px 20px 20px;
+	font-size: 0;
+	vertical-align: top;
+}
+#lineInfoPart,
+#stationInfoPart {
+	display: inline-block;
+	width: 49%;
+	font-size: initial;
+	margin: 0;
+	padding: 10px;
+	vertical-align: top;
+}
+h1 {
+	font-size: 30px;
+}
+h2 {
+	font-size: 25px;
+	border-bottom: 3px solid transparent;
+	padding: 3px;
+}
+h2 i {
+	padding: 5px 5px 5px 0px;
+}
+h3 {
+	font-size: 20px;
+	border-bottom: 2px solid transparent;
+	padding: 3px;
+}
+h3 i {
+	padding: 5px 5px 5px 0px;
+}
+h4 {
+	font-size: 18px;
+	border-bottom: 2px dotted transparent;
+	padding: 3px;
+}
+h4 i {
+	padding: 5px 5px 5px 0px;
+}
+#lineList {
+	font-size: 0;
+	width: 100%;
+}
+#lineList label {
+	display: inline-block;
+	font-size: 20px;
+	width: calc(100% / 3 - 5px);
+	margin: 2.5px;
+	border: 3px solid gray;
+	padding: 5px;
+	border-radius: 10px;
+}
+#directionList {
+	font-size: 0;
+	width: 100%;
+	padding: 0;
+}
+#directionList label {
+	font-size: 20px;
+	width: calc(100% / 2 - 15px);
+	margin: 0px 5px;
+	padding: 5px;
+	border-radius: 10px;
+	display: inline-block;
+	border: 2px solid gray;
+	text-align: center;
+}
+#directionList label input {
+	display: none;
+}
+table {
+	border: 2px solid black;
+	width: 100%;
+}
+td {
+	border: 1px solid #202020;
+	padding: 5px;
+}
+table#trainLocationTable {
+	width: 100%;
+}
+table#trainLocationTable td {
+	width: 50%;
+}
+div.busstopPolePanel {
+	width: 100%;
+	border: 1px solid transparent;
+	margin: 5px auto;
+	padding: 5px;
+	border-radius: 10px;
+	font-size: 16px;
+}
+div.busstopPolePanel button {
+	display: block;
+	margin: 5px auto;
+	border: none;
+	padding: 5px;
+	border-radius: 10px;
+	background-color: gray;
+	color: white;
+	font-size: 14px;
+}
+div.busRoutePanel {
+	width: 100%;
+	padding: 5px;
+	box-shadow: gray 2px 2px 4px;
+	margin: 10px 0px;
+}
+div.busRouteNote {
+	padding-left: 1em;
+}
