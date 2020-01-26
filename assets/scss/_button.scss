@@ -17,27 +17,27 @@
 .button--grey {
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid $color-grey;
-  color: $color-grey;
+  border: 1px solid $color-gray;
+  color: $color-gray;
   text-decoration: none;
   padding: 10px 30px;
   margin-left: 15px;
   &:hover {
     color: $color-white;
-    background-color: $color-grey;
+    background-color: $color-gray;
   }
 }
 
 .button--gif {
   display: inline-block;
   border-radius: 4px;
-  border: 1px solid $color-grey;
+  border: 1px solid $color-gray;
   color: $color-green;
   text-decoration: none;
   padding: 10px 30px;
   margin-left: 15px;
   &:hover {
     background-image: url("#{$img-path}nuxt_jump.gif");
-    color: $color-grey;
+    color: $color-gray;
   }
 }

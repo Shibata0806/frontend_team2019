@@ -36,8 +36,13 @@
 
         <!-- ここに各個人のページへのリンクを作成していきましょう。 -->
         <nuxt-link to="/shibata_masahito/myName" class="button--green">柴田昌人</nuxt-link>
-        <nuxt-link to="/shibata_masahito/myName" class="button--green">山田太郎</nuxt-link>
-
+        <nuxt-link to="/yamazaki_kouki/weather" class="button--green">山崎滉季</nuxt-link>
+        <nuxt-link to="/ichihara_mizuki/myName2" class="button--green">市原瑞樹</nuxt-link>
+        <nuxt-link to="/kameda_haruki/railway" class="button--green">亀田遼希</nuxt-link>
+        <nuxt-link to="/sugitani_hiroki/sample" class="button--green">杉谷拓紀</nuxt-link>
+        <nuxt-link to="/tomita_amane/todoapp" class="button--green">冨田亜茉音</nuxt-link>
+        <nuxt-link to="/nakachi_s_kota/" class="button--green">仲地サミエル洸太</nuxt-link>
+        <nuxt-link to="/kazehiki03" class="button--grey">kazehiki03</nuxt-link>
       </div>
     </div>
   </div>

@@ -24,12 +24,15 @@ module.exports = {
   */
   css: [
     'reset-css',
+    'swiper/dist/css/swiper.css',
     '~/assets/scss/default.scss'
   ],
   /*
   ** Plugins to load before mounting the App
   */
   plugins: [
+    { src: '~/plugins/sugitani/vue-awesome-swiper'},
+    { src: '~plugins/sugitani/vue-scrollto' }
   ],
   /*
   ** Nuxt.js modules
@@ -40,6 +43,10 @@ module.exports = {
   ** Build configuration
   */
   build: {
+    vendor: [
+      'vue-awesome-swiper',
+      'vue-scrollto'
+    ],
     /*
     ** You can extend webpack config here
     */

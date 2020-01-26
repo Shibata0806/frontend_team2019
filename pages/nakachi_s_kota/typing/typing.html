@@ -1,0 +1,33 @@
+<div id="app" class="text-center">
+    <!-- ゲーム中に表示する部分 -->
+    <div v-if="isTrying">
+        <div class="row">
+            <div class="col-12">
+                <!-- タイピング内容で画像を切り替え -->
+                <img src="/images/good.png" v-if="isTypingCorrect">
+                <img src="/images/bad.png" v-else>
+            </div>
+        </div>
+        <div class="badge badge-dark" style="margin:15px 0;">第{{ currentWordNumber }}問</div>
+        <h1>{{ currentWord }}</h1>
+        <div class="row">
+            <div class="offset-4 col-4">
+                <input id="input-typing" type="text" class="form-control" ref="input" v-model="typingText">
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-12">
+                <button type="button" class="btn btn-light btn-lg" @click="start()">やり直す</button>
+            </div>
+        </div>
+    </div>
+    <!-- ゲーム中に表示する部分 -->
+
+    <!-- ゲーム開始前に表示する部分 -->
+    <div style="padding:15px;" v-if="!isTrying">
+        <button type="button" class="btn btn-danger btn-lg" @click="start()">タイピングをスタート</button>
+    </div>
+    <!-- ゲーム開始前に表示する部分 -->
+
+</div>

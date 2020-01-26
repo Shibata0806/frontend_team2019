@@ -1,0 +1,14 @@
+<div class="appName">
+    <h1 class="title">{{message}}です</h1>
+    <div class="todo">
+        <input type="text" v-model.trim="myName" placeholder="入力してください">
+        <button @click="addObject">save</button>
+        <button @click="deleteMyName">delete</button>      
+    </div>
+    <div>
+        <ul>
+             <li v-for="(item,index) in items" v-bind:key="item.name">{{item}}<button @click="removeItem(index)">remove</button> </li>
+        </ul>
+    </div>
+   
+</div>
